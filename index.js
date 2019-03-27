@@ -1,0 +1,14 @@
+'use strict';
+
+module.exports = function download(dataType, data, filename) {
+  const element = document.createElement('a');
+  element.setAttribute('href', `data:${dataType};charset=utf-8,${encodeURIComponent(data)}` );
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+};
